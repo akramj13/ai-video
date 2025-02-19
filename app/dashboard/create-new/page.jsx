@@ -62,7 +62,7 @@ function CreateNew() {
         id: id,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.audioUrl);
         setLoading(false);
       })
       .catch((err) => {
