@@ -6,6 +6,7 @@ import SelectStyle from "./_components/SelectStyle";
 import SelectDuration from "./_components/SelectDuration";
 import Loading from "./_components/Loading";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 function CreateNew() {
   const [formData, setFormData] = useState([]);
@@ -42,16 +43,32 @@ function CreateNew() {
         console.log(err);
       })
       .finally(() => {
-        setLoading(false);
+        console.log("Completed");
+        // setLoading(false);
       });
   };
 
   const getAudio = async (videoScriptData) => {
+    setLoading(true);
     let script = "";
+    const id = uuidv4();
     videoScriptData.forEach((item) => {
       script += item.contentText + " ";
     });
     console.log(script);
+    const result = await axios
+      .post("/api/generate-audio", {
+        text: script,
+        id: id,
+      })
+      .then((res) => {
+        console.log(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
 
   const onCreateClickHandler = () => {
