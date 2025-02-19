@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Voice Synthesis AI
+
+A modern web application that leverages AI to generate high-quality voice-overs for short-form videos. Create engaging content with customizable voices, topics, and styles.
+
+## Features
+
+- 🎯 **Custom Topic Generation**: Choose from curated themes or input your own custom prompts
+- 🎨 **Multiple Styles**: Generate content in various styles including Realistic, Cartoon, Watercolor, and Anime
+- 🔊 **High-Quality Voice Synthesis**: Powered by ElevenLabs for natural-sounding voice generation
+- 📝 **Auto-Captioning**: Automatic caption generation using AssemblyAI
+- 🎬 **Quick Generation**: Fast processing for short-form video content
+- 🌓 **Dark/Light Mode**: Sleek interface with theme customization
+- 🔐 **Secure Authentication**: User authentication powered by Clerk
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 14 (App Router)
+- React 19
+- Tailwind CSS
+- shadcn/ui Components
+- Lucide Icons
+
+### Backend & APIs
+
+- Google Gemini AI - Content generation
+- ElevenLabs - Voice synthesis
+- AssemblyAI - Caption generation
+- AWS S3 - File storage
+- Neon Database - PostgreSQL database
+- Drizzle ORM - Database operations
+
+### Authentication & Deployment
+
+- Clerk - Authentication and user management
+- Vercel - Hosting and deployment
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18 or higher
+- npm or yarn
+- AWS Account
+- ElevenLabs API Key
+- AssemblyAI API Key
+- Google Gemini API Key
+- Clerk Account
+- Neon Database Account
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+NEXT_PUBLIC_GEMINI_API_KEY=
+
+NEXT_PUBLIC_ELEVEN_LABS_API_KEY=
+NEXT_PUBLIC_ELEVEN_LABS_VOICE_ID=
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
+AWS_S3_BUCKET_NAME=
+
+ASSEMBLYAI_API_KEY=
+
+NEXT_PUBLIC_DRIZZLE_DATABASE_URL=
+```
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/ai-video.git
+cd ai-video
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Database Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Initialize your database schema:
 
-## Learn More
+```bash
+npm run db:push
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Sign up or log in to your account
+2. Navigate to the dashboard
+3. Click "Create New" to start a new project
+4. Select your desired topic and style
+5. Wait for the AI to generate your content
+6. Download or share your generated video
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Next.js](https://nextjs.org)
+- [ElevenLabs](https://elevenlabs.io)
+- [AssemblyAI](https://assemblyai.com)
+- [Google Gemini](https://deepmind.google/technologies/gemini/)
+- [Clerk](https://clerk.com)
+- [Vercel](https://vercel.com)
