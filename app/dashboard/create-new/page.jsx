@@ -17,6 +17,8 @@ function CreateNew() {
 
   const [loading, setLoading] = useState(false);
   const [videoScript, setVideoScript] = useState(null);
+  const [fileUrl, setFileUrl] = useState("");
+  const [caption, setCaption] = useState(null);
   // Get Video Script
   const getVideoScript = async () => {
     setLoading(true);
@@ -64,6 +66,26 @@ function CreateNew() {
       .then((res) => {
         console.log(res.data.audioUrl);
         setLoading(false);
+        setFileUrl(res.data.audioUrl);
+        getCaption(res.data.audioUrl);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };
+
+  const getCaption = async (audioUrl) => {
+    setLoading(true);
+
+    const result = await axios
+      .post("/api/generate-caption", {
+        audioUrlFile: audioUrl,
+      })
+      .then((res) => {
+        console.log(res.data.transcript);
+        setCaption(res?.data?.transcript);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -87,7 +109,18 @@ function CreateNew() {
         <Button className="w-full mt-5" onClick={onCreateClickHandler}>
           Create
         </Button>
+        {fileUrl && (
+          <div className="mt-5 text-center">
+            <Button
+              onClick={() => window.open(fileUrl, "_blank")}
+              className="bg-green-500 hover:bg-green-600"
+            >
+              Download Audio Now
+            </Button>
+          </div>
+        )}
       </div>
+
       <Loading loading={loading} />
     </div>
   );

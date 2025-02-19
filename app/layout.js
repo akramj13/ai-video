@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Video Synthesis V1",
-  description: "Create videos with the power of AI",
+  title: "Voice Synthesis V1",
+  description: "Create voices for your shorts videos with the power of AI",
   icons: {
     icon: "/favicon.ico",
   },

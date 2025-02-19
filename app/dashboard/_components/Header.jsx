@@ -9,7 +9,7 @@ function Header() {
       <div className="flex gap-3 items-center">
         <Image src="/logo.svg" alt="logo" width={24} height={24} />
         <h1 className="text-xl font-bold text-primary dark:text-foreground">
-          Video Synthesis V1
+          Voice Synthesis V1
         </h1>
       </div>
       <div className="flex gap-3 items-center">
